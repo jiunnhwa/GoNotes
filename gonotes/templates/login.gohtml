@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>{{.PageTitle}}</title>
+	
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+      <style type="text/css">
+
+         /* Sticky footer styles
+         -------------------------------------------------- */
+
+         html,
+         body {
+           height: 100%;
+		   font-family: Verdana,Arial,Helvetica,fantasy,sans-serif;
+
+		color: #333;
+		background: white;
+           /* The html and body elements cannot have any padding or margin. */
+         }
+
+         /* Wrapper for page content to push down footer */
+         #wrap {
+           min-height: 100%;
+           height: auto !important;
+           height: 100%;
+           /* Negative indent footer by it's height */
+           margin: 0 auto -60px;
+         }
+
+         /* Set the fixed height of the footer here */
+         #push,
+         #footer {
+           height: 60px;
+         }
+         #footer {
+           background-color: #353535;
+		   color: #FFDF00;
+		   padding: 15px;
+      margin-bottom: 0;
+      border-radius: 0;		   
+         }
+
+         /* Lastly, apply responsive CSS fixes as necessary */
+         @media (max-width: 767px) {
+           #footer {
+			 background-color: black;
+             margin-left: -20px;
+             margin-right: -20px;
+             padding-left: 20px;
+             padding-right: 20px;
+           }
+         }
+
+
+
+         /* Custom page CSS
+         -------------------------------------------------- */
+         /* Not required for template or sticky footer method. */
+
+         .container {
+           width: auto;
+           max-width: 680px;
+         }
+         .container .credit {
+           margin: 20px 0;
+         }
+
+     </style>  
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">NewsAgent(alpha)</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+
+
+    </ul>        
+  </div>
+</nav>
+<div class="container">
+  <h5>News Agent(NAG) where Agents come Secretly to get their Daily Intelligence.</h5>
+  <p  style='font-size:10px; padding-top:2px; text-align:center;'>Nagging you for your own sake.</p>
+</div>
+<div class="container">
+  <h4><p class="text-danger">{{.Message}}</p></h4>
+   
+</div>
+
+	
+	<div class="container-fluid">
+
+	<form action="/login" method="post">Username:<input type="text" name="username">Password:<input type="password" name="password"><input type="submit" value="Login"></form>
+	
+	</div>
+</body>
+<footer>
+    
+</footer>
+</html>

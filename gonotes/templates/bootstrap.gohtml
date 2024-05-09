@@ -1,0 +1,39 @@
+{{define "base"}}
+<!DOCTYPE html>  
+<html lang="en">  
+  <head>
+    
+     {{ template "title" . }}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+	rel="stylesheet">
+  </head>
+  <body>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">News Agent(beta)</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Post</a></li>
+      <li><a href="#">Link</a></li>
+    </ul>
+    <button class="btn btn-danger navbar-btn" onClick="window.location.reload();">Refresh</button>
+  </div>
+</nav>
+    
+    {{ template "Header1" . }}
+   {{ template "Logout" . }}
+   
+   {{ template "CONTENT" . }}
+    <!-- jquery & Bootstrap JS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"  
+    </script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+    </script>
+  </body>
+<footer>
+    {{ template "Footer1" . }}
+</footer>  
+
+</html>  
+{{end}}

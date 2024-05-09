@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>{{.PageTitle}}</title>
+	
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+      <style type="text/css">
+
+         /* Sticky footer styles
+         -------------------------------------------------- */
+
+         html,
+         body {
+           height: 100%;
+		   font-family: Verdana,Arial,Helvetica,fantasy,sans-serif;
+
+		color: #333;
+		background: white;
+           /* The html and body elements cannot have any padding or margin. */
+         }
+
+         /* Wrapper for page content to push down footer */
+         #wrap {
+           min-height: 100%;
+           height: auto !important;
+           height: 100%;
+           /* Negative indent footer by it's height */
+           margin: 0 auto -60px;
+         }
+
+         /* Set the fixed height of the footer here */
+         #push,
+         #footer {
+           height: 60px;
+         }
+         #footer {
+           background-color: #353535;
+		   color: #FFDF00;
+		   padding: 15px;
+      margin-bottom: 0;
+      border-radius: 0;		   
+         }
+
+         /* Lastly, apply responsive CSS fixes as necessary */
+         @media (max-width: 767px) {
+           #footer {
+			 background-color: black;
+             margin-left: -20px;
+             margin-right: -20px;
+             padding-left: 20px;
+             padding-right: 20px;
+           }
+         }
+
+
+
+         /* Custom page CSS
+         -------------------------------------------------- */
+         /* Not required for template or sticky footer method. */
+
+         .container {
+           width: auto;
+           max-width: 680px;
+         }
+         .container .credit {
+           margin: 20px 0;
+         }
+
+.card-img-top {
+    width: 100%;
+    height: 30vw;
+    object-fit: cover;
+}
+
+
+     </style>  
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    <a class="navbar-brand" href="#">NewsAgent(alpha)</a><br/>
+    {{if .HasSessionID }}
+    <span class="badge badge-dark">Welcome Agent: {{ .Agent.UserName }}</span>   
+    {{else}}
+    <span class="badge badge-danger">Welcome The UnNamed Spy</span>   
+    {{end}}	  	  
+    </div>
+      
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/view">View</a></li>
+      <li ><a style="color:orange; font-weight: bold" href="/admin">Admin</a></li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+		{{if .HasSessionID }}
+			<li><a style="color:yellow; font-weight: bold" href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+		{{else}}
+			<li><a style="color:green; font-weight: bold"href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		{{end}}	  
+    </ul>          
+  </div>
+</nav>
+<div class="container">
+  <h5>News Agent(NAG) where Agents come Secretly to get their Daily Intelligence.</h5>
+  <p  style='font-size:10px; padding-top:2px; text-align:center;'>Nagging you for your own sake.</p>
+</div>
+
+
+
+<form action="/sessions" method="post">
+<h4>Please enter a Session to delete:<input type="text" width="350" name="items"></h4>
+<input type="submit" value="Enter">
+</form>
+
+<div class="container-fluid">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">UserName</th>
+      <th scope="col">LoginTime</th>
+    </tr>
+  </thead>
+  	{{range .Sessions }}
+  <tbody>
+    <tr>
+      <td><h6><span class="badge badge-secondary">{{.UserName}}</span> </h6></td>
+      <td>{{.LoginTime}}</td>
+    </tr>
+  </tbody>
+  {{end}}
+</table>
+
+
+</div>
+
+
+
+</body>
+<footer>
+    
+</footer>
+</html>

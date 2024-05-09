@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>{{.PageTitle}}</title>
+	
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+      <style type="text/css">
+
+         /* Sticky footer styles
+         -------------------------------------------------- */
+
+         html,
+         body {
+           height: 100%;
+		   font-family: Verdana,Arial,Helvetica,fantasy,sans-serif;
+
+		color: #333;
+		background: white;
+           /* The html and body elements cannot have any padding or margin. */
+         }
+
+         /* Wrapper for page content to push down footer */
+         #wrap {
+           min-height: 100%;
+           height: auto !important;
+           height: 100%;
+           /* Negative indent footer by it's height */
+           margin: 0 auto -60px;
+         }
+
+         /* Set the fixed height of the footer here */
+         #push,
+         #footer {
+           height: 60px;
+         }
+         #footer {
+           background-color: #353535;
+		   color: #FFDF00;
+		   padding: 15px;
+      margin-bottom: 0;
+      border-radius: 0;		   
+         }
+
+         /* Lastly, apply responsive CSS fixes as necessary */
+         @media (max-width: 767px) {
+           #footer {
+			 background-color: black;
+             margin-left: -20px;
+             margin-right: -20px;
+             padding-left: 20px;
+             padding-right: 20px;
+           }
+         }
+
+
+
+         /* Custom page CSS
+         -------------------------------------------------- */
+         /* Not required for template or sticky footer method. */
+
+         .container {
+           width: auto;
+           max-width: 680px;
+         }
+         .container .credit {
+           margin: 20px 0;
+         }
+
+     </style>  
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">NewsAgent(alpha)</a><br/>
+	{{if .HasSessionID }}
+	<span class="badge badge-dark">Welcome Agent: {{ .Agent.UserName }}</span>   
+	{{else}}
+	<span class="badge badge-danger">Welcome The UnNamed Spy</span>   
+	{{end}}	  	  
+    </div>
+	
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/view">News</a></li>	  
+    </ul>
+    <button class="btn btn-danger navbar-btn"  onClick="window.location.href = '/view'"    >View </button>     
+    <button class="btn btn-primary navbar-btn"  onClick="window.location.href = '/add'"    >Add </button>   
+
+
+	
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+		{{if .HasSessionID }}
+			<li><a style="color:yellow; font-weight: bold" href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+		{{else}}
+			<li><a style="color:green; font-weight: bold"href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		{{end}}	  
+    </ul>        
+  </div>
+</nav>
+<div class="container">
+  <h5>News Agent(NAG) where Agents come Secretly to get their Daily Intelligence.</h5>
+  <p  style='font-size:10px; padding-top:2px; text-align:center;'>Nagging you for your own sake.</p>
+</div>
+<div class="container">
+  <h4>Total Records: {{.RowCount}}</h4>
+  
+</div>
+
+
+	
+  <div class="container-fluid">
+
+    <form action="/add" id="form1" method="post">
+
+<div style="display: {{.DataTableDisplay}};" >
+  <label for="table">   
+  Select a Table:
+  </label>  <br>
+  <select name="DataTable" id="DataTable" size="5"  style="width: 300px" >
+      <option value="urls.json" selected > General </option>
+      <option value="product.json"       > Product </option>
+
+  </select>
+</div>
+<hr>
+
+    <b>What would you like to add (not case sensitive,pls specify table)?</b><br>
+    <input type="text" name="items" style="width: 600px" value="{{.URL}}">
+    <input type="submit" name="submit" value="Enter">
+      <div class="card-body">
+      <p class="card-text"><b>you can edit then save.</b></p>
+      <input type="submit" name="submit" value="Add">
+      </div>       
+
+<div class="container-fluid">
+    <input type="text" id="ResponseTitle" name="ResponseTitle" style="width: 700px" value="{{.ResponseTitle}}">
+    
+
+ </div>
+<div class="container-fluid">
+    
+    <input type="text" id="ResponseDescription" name="ResponseDescription" style="width: 700px" value="{{.ResponseDescription}}">
+
+ </div>
+  
+
+    </form>
+  </div>
+
+
+</body>
+<footer>
+    
+</footer>
+</html>
